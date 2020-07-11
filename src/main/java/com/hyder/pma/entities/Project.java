@@ -16,8 +16,8 @@ import javax.persistence.ManyToMany;
 public class Project {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	
+	//@GeneratedValue(strategy=GenerationType.AUTO)	// enables auto generation
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	// db does the auto generation
 	private long projectId;
 	private String name;
 	private String stage;	// NOTSTARTED, INPROGRESS, COMPLETED

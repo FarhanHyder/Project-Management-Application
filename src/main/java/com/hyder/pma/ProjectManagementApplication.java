@@ -27,6 +27,7 @@ public class ProjectManagementApplication {
 	}
 	
 	// command line runner
+	/*
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
@@ -90,5 +91,6 @@ public class ProjectManagementApplication {
 			projRepo.save(pro4);
 		};
 	}
+	*/
 
 }
