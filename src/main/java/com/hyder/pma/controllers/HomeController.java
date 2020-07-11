@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hyder.pma.dao.EmployeeRepository;
 import com.hyder.pma.dao.ProjectRepository;
+import com.hyder.pma.dto.EmployeeProject;
 import com.hyder.pma.entities.Employee;
 import com.hyder.pma.entities.Project;
 
@@ -26,8 +27,8 @@ public class HomeController {
 		List<Project> projects = proRepo.findAll();
 		model.addAttribute("projects", projects);
 		
-		List<Employee> employees = empRepo.findAll();
-		model.addAttribute("employeesList", employees);
+		List<EmployeeProject> employeesProjectCount = empRepo.employeeProjects();
+		model.addAttribute("employeesProjectCount", employeesProjectCount);
 		
 		return "main/home";
 	}
