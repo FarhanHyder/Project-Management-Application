@@ -7,7 +7,7 @@
 
 	<nav th:replace="layouts :: navbar"></nav>
 
-	<div class="container">
+	<div class="jumbotron jumbotron-fluid text-center">
 	
 		<form action="/employees/save" th:object="${employee}" method="POST">
 		
@@ -15,9 +15,9 @@
 		<input type="text" placeholder="Last Name" th:field="${employee.lastName}">
 		<input type="text" placeholder="Email" th:field="${employee.email}">
 		
-
+		<br/> <br/>
 		
-		<button type="submit">Create Employee</button>
+		<button class="btn btn-primary" type="submit">Create Employee</button>
 		
 		</form>
 	
