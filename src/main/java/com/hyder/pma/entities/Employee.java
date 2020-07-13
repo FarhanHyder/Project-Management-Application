@@ -11,13 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Employee {
 	
+	/*
 	@Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)	// enables auto generation
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	// db does the auto generation
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="employee_seq")	// db does the auto generation
+	*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_generator")
+	@SequenceGenerator(name = "employee_generator",sequenceName = "employee_seq", initialValue = 100, allocationSize = 10)
 	private long employeeId;
 	
 	private String firstName;

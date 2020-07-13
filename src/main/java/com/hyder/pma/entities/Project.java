@@ -11,13 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Project {
 	
 	@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO)	// enables auto generation
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	// db does the auto generation
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_generator")
+	@SequenceGenerator(name = "project_generator",sequenceName = "project_seq", initialValue = 100, allocationSize = 10)
 	private long projectId;
 	private String name;
 	private String stage;	// NOTSTARTED, INPROGRESS, COMPLETED
