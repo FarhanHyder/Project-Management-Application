@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Employee {
 	
@@ -22,8 +24,10 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="employee_seq")	// db does the auto generation
 	*/
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_generator")
-	@SequenceGenerator(name = "employee_generator",sequenceName = "employee_seq", initialValue = 100, allocationSize = 10)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_generator")
+//	@SequenceGenerator(name = "employee_generator",sequenceName = "employee_seq", initialValue = 100, allocationSize = 10)
+	@SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1,initialValue=1)
 	private long employeeId;
 	
 	private String firstName;
@@ -42,6 +46,7 @@ public class Employee {
 	@JoinTable(name="project_employee",
 	joinColumns = @JoinColumn(name="employee_id"),
 	inverseJoinColumns=@JoinColumn(name="project_id"))
+	@JsonIgnore
 	private List<Project> projects;
 	
 	public Employee() {}

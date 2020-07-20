@@ -13,12 +13,16 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Project {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_generator")
-	@SequenceGenerator(name = "project_generator",sequenceName = "project_seq", initialValue = 100, allocationSize = 10)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_generator")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")
+//	@SequenceGenerator(name = "project_generator",sequenceName = "project_seq", initialValue = 100, allocationSize = 10)
+	@SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1,initialValue=1)
 	private long projectId;
 	private String name;
 	private String stage;	// NOTSTARTED, INPROGRESS, COMPLETED
@@ -29,6 +33,7 @@ public class Project {
 	@JoinTable(name="project_employee",
 				joinColumns = @JoinColumn(name="project_id"),
 				inverseJoinColumns=@JoinColumn(name="employee_id"))
+	@JsonIgnore
 	private List<Employee> employees;
 	
 	public Project() {}
