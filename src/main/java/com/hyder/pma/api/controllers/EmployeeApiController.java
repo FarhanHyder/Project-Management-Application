@@ -2,6 +2,8 @@ package com.hyder.pma.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -38,7 +40,7 @@ public class EmployeeApiController {
 	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Employee create(@RequestBody Employee employee) {
+	public Employee create(@RequestBody @Valid Employee employee) {
 		return empRepo.save(employee);
 	}
 	
