@@ -24,12 +24,22 @@
 					<tr>
 						<th>Project Name</th>
 						<th>Project Stage</th>
+						<th>Description</th>
+						<th>Action</th>
 					</tr>
 				</thead>		
 				<tbody>
 					<tr th:each="aProject : ${projects}">
 						<td th:text="${aProject.name}"/>
 						<td th:text="${aProject.stage}"/>
+						<td th:text="${aProject.description}"/>
+						<td>
+							<a th:href="@{/projects/update(id=${aProject.projectId})}"
+								class="btn btn-info btn-sm">update</a>
+							<a th:href="@{/projects/delete(id=${aProject.projectId})}"
+								class="btn btn-warning btn-sm"
+								onclick="if (!(confirm('Are you sure?'))) return false">delete</a>
+						</td>
 					</tr>
 				</tbody>
 			

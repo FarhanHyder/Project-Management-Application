@@ -52,5 +52,22 @@ public class ProjectController {
 
 		return "redirect:/projects";
 	}
+	
+	@GetMapping("/update")
+	public String displayProjectUpdateForm(@RequestParam("id") long projectId, Model model) {
+		
+		Project aProject = proRepo.findByProjectId(projectId);
+		model.addAttribute("project", aProject);
+		
+		return "projects/new-project";
+	}
+	
+	@GetMapping("delete")
+	public String deleteProject(@RequestParam("id") long projectId, Model model) {
+		Project aProject = proRepo.findByProjectId(projectId);
+		proRepo.delete(aProject);
+		return "redirect:/projects";
+	}
+
 
 }

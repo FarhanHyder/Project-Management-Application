@@ -18,4 +18,6 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, L
 			"from project " + 
 			"group by stage")
 	public List<ChartData> getProjectStatus();
+
+	public Project findByProjectId(long projectId);
 }
