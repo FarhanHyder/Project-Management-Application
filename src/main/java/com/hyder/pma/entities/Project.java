@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,8 +25,13 @@ public class Project {
 //	@SequenceGenerator(name = "project_generator",sequenceName = "project_seq", initialValue = 100, allocationSize = 10)
 	@SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1,initialValue=1)
 	private long projectId;
+	
+	@NotNull
 	private String name;
+	
+	@NotNull
 	private String stage;	// NOTSTARTED, INPROGRESS, COMPLETED
+	
 	private String description;
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
